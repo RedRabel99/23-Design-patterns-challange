@@ -41,11 +41,11 @@ namespace Facade
         }
     }
 
-    class Waiter
+    class WaiterSystem
     {
         private string _name;
 
-        public Waiter(string name)
+        public WaiterSystem(string name)
         {
             _name = name;
         }
@@ -67,11 +67,11 @@ namespace Facade
         }
     }
 
-    class Cook
+    class CookSystem
     {
         private string _name;
 
-        public Cook(string name)
+        public CookSystem(string name)
         {
             _name = name;
         }
@@ -85,13 +85,13 @@ namespace Facade
 
     class RestaurantFacade
     {
-        private Waiter _waiter;
-        private Cook _cook;
+        private WaiterSystem _waiterSystem;
+        private CookSystem _cookSystem;
 
         public RestaurantFacade(string waiterName, string cookName)
         {
-            _waiter = new Waiter(waiterName);
-            _cook = new Cook(cookName);
+            _waiterSystem = new WaiterSystem(waiterName);
+            _cookSystem = new CookSystem(cookName);
         }
 
         public void ServiceCustomer()
@@ -99,9 +99,9 @@ namespace Facade
             string mealName;
             Console.WriteLine("Enter the meal you want to get: ");
             mealName = Console.ReadLine();
-            Order order = _waiter.CreateOrder(mealName, 22.99);
-            Meal meal = _cook.MakeMeal(order);
-            _waiter.ServeOrder(meal);
+            Order order = _waiterSystem.CreateOrder(mealName, 22.99);
+            Meal meal = _cookSystem.MakeMeal(order);
+            _waiterSystem.ServeOrder(meal);
         }
     }
     class FacadeProgram
