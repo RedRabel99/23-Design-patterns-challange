@@ -6,18 +6,18 @@ namespace Observer
 {
     public class YouTuber
     {
-        private List<IObserver> _observers;
+        private List<IObserver> _subscribers;
         private string _name;
 
         public YouTuber(string name)
         {
-            _observers = new List<IObserver>();
+            _subscribers = new List<IObserver>();
             _name = name;
         }
 
         public void Add(IObserver observer)
         {
-            _observers.Add(observer);
+            _subscribers.Add(observer);
             if (observer is Subscriber subscriber)
             {
                 Console.WriteLine($"{subscriber.GetName()} subscribed {_name}");
@@ -26,7 +26,7 @@ namespace Observer
 
         public void Upload(string movieName)
         {
-            _observers.ToList().ForEach(x =>
+            _subscribers.ToList().ForEach(x =>
             {
                 x.Update(this, movieName);
             });
