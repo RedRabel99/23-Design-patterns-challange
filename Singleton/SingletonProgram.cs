@@ -3,15 +3,16 @@ using System.Collections.Generic;
 
 namespace Singleton
 {
-    public sealed class ShoppingCart {
-        
+    public sealed class ShoppingCart
+    {
         private static ShoppingCart _instance = null;
         private List<string> _items;
         
         private ShoppingCart()
         {
             _items = new List<string>();
-        }  
+        }
+        
         public static ShoppingCart Instance {  
             get {  
                 if (_instance == null) {  
@@ -40,13 +41,13 @@ namespace Singleton
             }
         }
     }
-class SingletonProgram
+    class SingletonProgram
     {
         static void Main(string[] args)
         {
             ShoppingCart cart1 = ShoppingCart.Instance;
             ShoppingCart cart2 = ShoppingCart.Instance;
-            
+                
             Console.WriteLine(cart1 == cart2);
             
             cart1.AddItem("CPU");
