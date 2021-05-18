@@ -2,12 +2,12 @@
 
 namespace Prototype
 {
-    public abstract class Weapon
+    public abstract class Protype
     {
-        public abstract Weapon Clone();
+        public abstract Protype Clone();
     }
 
-    public class Bow : Weapon
+    public class Bow : Protype
     {
         private int _damage;
         private double _attackSpeed;
@@ -18,7 +18,7 @@ namespace Prototype
             _attackSpeed = attackSpeed;
         }
 
-        public override Weapon Clone()
+        public override Protype Clone()
         {
             return (Bow) this.MemberwiseClone();
         }
@@ -38,8 +38,8 @@ namespace Prototype
     {
         static void Main(string[] args)
         {
-            Weapon bow = new Bow(50, 1.5);
-            Weapon clone = bow.Clone();
+            Protype bow = new Bow(50, 1.5);
+            Protype clone = bow.Clone();
 
             if (bow is Bow firstBow)
             {
